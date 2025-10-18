@@ -88,7 +88,7 @@ public TaskExecution execute(...) { ... }
 
 ### 2.1 Implement KubernetesCommandRunner
 
-**File**: `src/main/java/dev/kanishprabakaran/kaiburr/task1/service/KubernetesCommandRunner.java`
+**File**: `src/main/java/dev/adityar/kaiburr/task1/service/KubernetesCommandRunner.java`
 
 **Requirements**:
 ```java
@@ -245,7 +245,7 @@ public interface TaskClient {
 
 **Enhancement**: Add WebSocket endpoint for execution progress
 
-**File**: `src/main/java/dev/kanishprabakaran/kaiburr/task1/websocket/TaskExecutionWebSocket.java`
+**File**: `src/main/java/dev/adityar/kaiburr/task1/websocket/TaskExecutionWebSocket.java`
 
 ```java
 @ServerEndpoint("/ws/tasks/{taskId}/executions")

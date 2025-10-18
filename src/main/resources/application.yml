@@ -47,7 +47,7 @@ springdoc:
 
 logging:
   level:
-    dev.kanishprabakaran.kaiburr: INFO
+    dev.adityar.kaiburr: INFO
     org.springframework.data.mongodb: INFO
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"

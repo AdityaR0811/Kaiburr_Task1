@@ -298,7 +298,7 @@ kaiburr-task1/
 │   └── make-screenshot-overlay.md       # Screenshot guide
 ├── src/
 │   ├── main/
-│   │   ├── java/dev/kanishprabakaran/kaiburr/task1/
+│   │   ├── java/dev/adityar/kaiburr/task1/
 │   │   │   ├── config/                  # Configuration classes
 │   │   │   ├── controller/              # REST controllers
 │   │   │   ├── domain/                  # Entity models
