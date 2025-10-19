@@ -449,9 +449,9 @@ This is a demonstration project for Kaiburr assessment. For production use:
 
 ## 📞 Contact
 
-**Aditya R.**  
-Email: aditya@example.com  
-GitHub: @adityar
+**Aditya R**  
+Email: adityar.cse2026@gmail.com  
+GitHub: @AdityaR0811
 
 ## 📜 License
 
