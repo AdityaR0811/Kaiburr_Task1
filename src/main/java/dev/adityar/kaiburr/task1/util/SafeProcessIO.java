@@ -7,7 +7,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.concurrent.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 /**
  * Safe process I/O handler with timeouts and output truncation
@@ -27,11 +32,21 @@ public class SafeProcessIO {
             int maxStdoutBytes,
             int maxStderrBytes) throws InterruptedException {
         
-        Future<String> stdoutFuture = executorService.submit(() -> 
-            readStream(process.getInputStream(), maxStdoutBytes));
+        Future<String> stdoutFuture = executorService.submit(() -> {
+            try {
+                return readStream(process.getInputStream(), maxStdoutBytes);
+            } catch (IOException e) {
+                return "Error reading stdout: " + e.getMessage();
+            }
+        });
         
-        Future<String> stderrFuture = executorService.submit(() -> 
-            readStream(process.getErrorStream(), maxStderrBytes));
+        Future<String> stderrFuture = executorService.submit(() -> {
+            try {
+                return readStream(process.getErrorStream(), maxStderrBytes);
+            } catch (IOException e) {
+                return "Error reading stderr: " + e.getMessage();
+            }
+        });
         
         boolean completed = process.waitFor(timeoutSeconds, TimeUnit.SECONDS);
         
@@ -39,16 +54,15 @@ public class SafeProcessIO {
             process.destroyForcibly();
             stdoutFuture.cancel(true);
             stderrFuture.cancel(true);
-            throw new TimeoutException("Process execution timed out after " + timeoutSeconds + " seconds");
+            return new ProcessResult(-1, "", "Process execution timed out after " + timeoutSeconds + " seconds", true);
         }
         
         try {
             String stdout = stdoutFuture.get(1, TimeUnit.SECONDS);
             String stderr = stderrFuture.get(1, TimeUnit.SECONDS);
             int exitCode = process.exitValue();
-            
             return new ProcessResult(exitCode, stdout, stderr, false);
-        } catch (ExecutionException | TimeoutException e) {
+        } catch (Exception e) {
             log.error("Error reading process output", e);
             return new ProcessResult(-1, "", "Error reading output: " + e.getMessage(), true);
         }
