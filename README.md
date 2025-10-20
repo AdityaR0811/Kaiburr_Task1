@@ -9,7 +9,7 @@
 [![MongoDB](https://img.shields.io/badge/MongoDB-7.0-brightgreen.svg)](https://www.mongodb.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## 🌟 Project Overview
+## Project Overview
 
 Kaiburr Task 1 is a production-ready **Secure Task Execution Service** built with Spring Boot 3 and MongoDB. It provides a REST API for managing tasks and executing system commands with comprehensive security validation and audit trails.
 
@@ -23,7 +23,7 @@ Kaiburr Task 1 is a production-ready **Secure Task Execution Service** built wit
 6. **Observability**: Built-in metrics, health checks, and correlation ID tracking
 7. **STRIDE Threat Model**: Security design documented with threat analysis
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -68,7 +68,7 @@ java -jar target/task1-1.0.0-SNAPSHOT.jar
 
 The application will start on **http://localhost:8080**
 
-## 📚 API Documentation
+## API Documentation
 
 ### Base Path: `/api`
 
@@ -96,45 +96,45 @@ Interactive API documentation is available at:
 - **Metrics**: http://localhost:8080/actuator/metrics
 - **Prometheus**: http://localhost:8080/actuator/prometheus
 
-## 🖼️ Screenshots
+## Screenshots
 
 ### Application Startup
-![App Startup](docs/screenshots/01-app-startup.png)
+![App Startup](docs/screenshots/1.png)
 *Banner showing "Aditya R." with system clock visible*
 
 ### Create Task (PUT /api/tasks)
-![Create Task](docs/screenshots/02-create-task.png)
+![Create Task](docs/screenshots/2.png)
 *Creating a task with Postman - timestamp and name visible*
 
 ### Get All Tasks (GET /api/tasks)
-![Get All Tasks](docs/screenshots/03-get-tasks.png)
+![Get All Tasks](docs/screenshots/3.png)
 *Listing all tasks with pagination*
 
 ### Get Task by ID (GET /api/tasks/{id})
-![Get Task By ID](docs/screenshots/04-get-task-by-id.png)
+![Get Task By ID](docs/screenshots/4.png)
 *Retrieving specific task details*
 
 ### Search Tasks (GET /api/tasks/search?name=...)
-![Search Tasks](docs/screenshots/05-search-tasks.png)
+![Search Tasks](docs/screenshots/5.png)
 *Case-insensitive name search*
 
 ### Execute Task (PUT /api/tasks/{id}/executions)
-![Execute Task](docs/screenshots/06-execute-task.png)
+![Execute Task](docs/screenshots/6.png)
 *Successful command execution with output capture*
 
 ### Validation Failure
-![Validation Failure](docs/screenshots/07-validation-failure.png)
+![Validation Failure](docs/screenshots/7.png)
 *Security policy rejecting malicious command*
 
 ### Delete Task (DELETE /api/tasks/{id})
-![Delete Task](docs/screenshots/08-delete-task.png)
+![Delete Task](docs/screenshots/8.png)
 *Task deletion with 204 response*
 
 ### MongoDB Data
-![MongoDB Data](docs/screenshots/09-mongodb-data.png)
+![MongoDB Data](docs/screenshots/9.png)
 *Task records in MongoDB Compass with timestamp overlay*
 
-## 🔐 Security Features
+## Security Features
 
 ### Command Validation Policy
 
@@ -163,14 +163,14 @@ All shell metacharacters are rejected:
 
 ### Security Guarantees
 
-1. ✅ **No Shell Invocation**: Commands executed directly via `ProcessBuilder` (no `/bin/sh -c`)
-2. ✅ **Input Validation**: Strict character allowlists and denylists
-3. ✅ **Timeout Protection**: Automatic process termination after 5 seconds
-4. ✅ **Output Limiting**: Prevents memory exhaustion from large outputs
-5. ✅ **Audit Logging**: Every execution logged with correlation ID and command hash
-6. ✅ **Optimistic Locking**: Prevents concurrent modification conflicts
+1. **No Shell Invocation**: Commands executed directly via `ProcessBuilder` (no `/bin/sh -c`)
+2. **Input Validation**: Strict character allowlists and denylists
+3. **Timeout Protection**: Automatic process termination after 5 seconds
+4. **Output Limiting**: Prevents memory exhaustion from large outputs
+5. **Audit Logging**: Every execution logged with correlation ID and command hash
+6. **Optimistic Locking**: Prevents concurrent modification conflicts
 
-## 📖 Example API Usage
+## Example API Usage
 
 ### Create a Task
 
@@ -207,7 +207,7 @@ curl -X POST http://localhost:8080/api/validation/command \
 curl http://localhost:8080/api/tasks/search?name=System
 ```
 
-## 🧪 Testing
+## Testing
 
 ### Run All Tests
 
@@ -223,13 +223,13 @@ mvn test -Dtest=KaiburrTask1IntegrationTest
 
 ### Test Coverage
 
-- ✅ `CommandValidatorTest`: 20+ test cases covering all validation rules
-- ✅ `LocalCommandRunnerTest`: Process execution, timeout, output capture
-- ✅ `TaskServiceTest`: CRUD operations, execution flow, audit logging
-- ✅ `TaskControllerTest`: HTTP layer, correlation IDs, error responses
-- ✅ `KaiburrTask1IntegrationTest`: End-to-end tests with Testcontainers MongoDB
+- `CommandValidatorTest`: 20+ test cases covering all validation rules
+- `LocalCommandRunnerTest`: Process execution, timeout, output capture
+- `TaskServiceTest`: CRUD operations, execution flow, audit logging
+- `TaskControllerTest`: HTTP layer, correlation IDs, error responses
+- `KaiburrTask1IntegrationTest`: End-to-end tests with Testcontainers MongoDB
 
-## 🏗️ Architecture
+## Architecture
 
 ### System Architecture
 
@@ -276,7 +276,7 @@ graph TB
 - **Testing**: JUnit 5, Mockito, Testcontainers
 - **Build**: Maven 3.8+
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 kaiburr-task1/
@@ -315,7 +315,7 @@ kaiburr-task1/
 └── README.md
 ```
 
-## 🔧 Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -336,7 +336,7 @@ Activate profile:
 java -jar target/task1-1.0.0-SNAPSHOT.jar --spring.profiles.active=k8s
 ```
 
-## 📊 Monitoring & Observability
+## Monitoring & Observability
 
 ### Correlation IDs
 
@@ -371,7 +371,7 @@ Prometheus metrics available at `/actuator/prometheus`:
 - MongoDB connection pool metrics
 - Custom application metrics (coming in Task 2+)
 
-## 🛠️ Troubleshooting
+## Troubleshooting
 
 ### MongoDB Connection Issues
 
@@ -417,7 +417,7 @@ docker info
 mvn test -X
 ```
 
-## 🚧 Future Enhancements (Task 2+)
+## Future Enhancements (Task 2+)
 
 Documented in [`adr/0002-extensibility.md`](adr/0002-extensibility.md):
 
@@ -430,7 +430,7 @@ Documented in [`adr/0002-extensibility.md`](adr/0002-extensibility.md):
 - [ ] OAuth2 authentication
 - [ ] Multi-tenancy support
 
-## 📄 Additional Documentation
+## Additional Documentation
 
 - **Architecture Decisions**: [adr/0001-decisions.md](adr/0001-decisions.md)
 - **Threat Model**: [docs/threat-model.md](docs/threat-model.md)
@@ -438,7 +438,7 @@ Documented in [`adr/0002-extensibility.md`](adr/0002-extensibility.md):
 - **API Specification**: [api-spec/openapi.yaml](api-spec/openapi.yaml)
 - **Screenshot Guide**: [scripts/make-screenshot-overlay.md](scripts/make-screenshot-overlay.md)
 
-## 👥 Contributing
+## Contributing
 
 This is a demonstration project for Kaiburr assessment. For production use:
 1. Review and adjust security policies
@@ -447,16 +447,16 @@ This is a demonstration project for Kaiburr assessment. For production use:
 4. Set up monitoring alerts
 5. Implement rate limiting
 
-## 📞 Contact
+## Contact
 
 **Aditya R.**  
 Email: aditya@example.com  
 GitHub: @adityar
 
-## 📜 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-**Built with ❤️ by Aditya R. for Kaiburr Assessment - October 2025**
+**Built by Aditya R. for Kaiburr Assessment - October 2025**
