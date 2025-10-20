@@ -449,9 +449,9 @@ This is a demonstration project for Kaiburr assessment. For production use:
 
 ## Contact
 
-**Aditya R.**  
-Email: aditya@example.com  
-GitHub: @adityar
+**Aditya R**  
+Email: adityar.cse2026@gmail.com  
+GitHub: @AdityaR0811
 
 ## License
 
@@ -459,4 +459,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Built by Aditya R. for Kaiburr Assessment - October 2025**
+**Built with ❤️ by Aditya R. for Kaiburr Assessment - October 2025**
